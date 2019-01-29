@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ACM_JLINE</title>
+    <title>差分约束 · ACM_JLINE</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -77,6 +77,8 @@
 
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -201,14 +203,23 @@
 </head>
 
     
-        <body class="home-body">
+        <body class="post-body">
     
     
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">ACM_JLINE.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">差分约束</a>
+            </div>
+    </div>
     
     <a class="home-link" href="/">ACM_JLINE.</a>
 </header>
@@ -227,17 +238,17 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/IMG.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            ACM_JLINE.
-            <!-- 文章页  -->
+            差分约束
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -245,12 +256,49 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                Never complain about what has happened, or change it, or accept it quiet.
-            
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="差分约束">差分约束</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">911</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/01/29</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -351,239 +399,59 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/29/DAY4/">
-            
-                <span>差分约束</span>
-        </a>
-        <div class="abstract-content">
-            [题目连接]洛谷 BZOJ1731推荐洛谷 因为好多OJ这一题数据较水（亲测）
-题意正如其他物种一样，奶牛们也喜欢在排队打饭时与它们的朋友挨在一起。有编号为 1 2…N 的 N头奶牛 (2 ≤ N ≤ 1000)。开始时，奶牛们按照编号顺序来排队。奶牛们很笨拙，因此可能有多头奶牛在同一位置上。
-有些奶牛是好基友，它们希望彼此之间的距离小于等于某个数。有些奶牛是情敌，它们希望彼此之间的距离大于等于某个数。
-给出 ML 对好基友的编号，以及它们希望彼此之间的距离小于等于多少；又给出 MD 对情敌的编号，以及它们希望彼此之间的距离大于等于多少 。(1 ≤ ML,MD ≤ 1e4)
-请计算：如果...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="差分约束">差分约束</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/24/DAY1/">
-            
-                <span>二分+最短路</span>
-        </a>
-        <div class="abstract-content">
-            Telephone Lines原题链接：Poj3662
-题目大意 ： 在无向图上求出一条从 1 到 N 的路径，是路径上第 K + 1 大的边权尽量小
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>[题目连接]<a href="https://www.luogu.org/problemnew/show/P4878" target="_blank" rel="noopener">洛谷</a> <a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1731" target="_blank" rel="noopener">BZOJ1731</a><br>推荐洛谷 因为好多OJ这一题数据较水（亲测）</p>
+<p><strong>题意</strong><br>正如其他物种一样，奶牛们也喜欢在排队打饭时与它们的朋友挨在一起。有编号为 1 2…N 的 N头奶牛 (2 ≤ N ≤ 1000)。开始时，奶牛们按照编号顺序来排队。奶牛们很笨拙，因此可能有多头奶牛在同一位置上。</p>
+<p>有些奶牛是好基友，它们希望彼此之间的距离小于等于某个数。有些奶牛是情敌，它们希望彼此之间的距离大于等于某个数。</p>
+<p>给出 M<sub>L</sub> 对好基友的编号，以及它们希望彼此之间的距离小于等于多少；又给出 M<sub>D</sub> 对情敌的编号，以及它们希望彼此之间的距离大于等于多少 。(1 ≤ M<sub>L</sub>,M<sub>D</sub> ≤ 1e4)</p>
+<p>请计算：如果满足上述所有条件，1 号奶牛和 N 号奶牛之间的距离最大为多少。</p>
+<p><strong>输出格式</strong><br>一行，一个整数。如果没有合法方案，输出 -1. 如果有合法方案，但 1 号奶牛可以与 N 号奶牛相距无穷远，输出 -2. 否则，输出 1 号奶牛与 N 号奶牛间的最大距离。</p>
+<p><strong>题解</strong><br>很明显的差分约束了<br>根据题目，可列出以下式子：( u &lt; v )<br>dis[v] − dis[u] ≤ L ⇒ dis[v] − dis[u] ≤ L ⇒ 从u到v连一条边权为L的边     add(u, v, L)<br>dis[v] − dis[u] ≥ D ⇔ dis[u] − dis[v] ≤ −D ⇒ dis[v] − dis[u] ≥ D ⇔ dis[u] − dis[v] ≤ −D ⇒  从v到u连一条边权为-D的边     add(v, u, -D)</p>
+<p>这些是比较容易想到的条件了， <strong>但是</strong> 根据题意 dis[i] &lt;= dis[i+1] 也就是说需要add(i, i-1, 0)。 <strong>然后</strong>一般性水点的数据没问题了，可是万一图上是存在负环的，可是你选择的起点，正常是 1 号点是独立于负环的， 也就是说万一起点根本没有进入负环，你的答案就出错了， 正确答案应该是 -1 。 所以还要设一个 0 号点， 与所有点建立 0 边， 第一次跑 SPFA 以 0 号点为起点，如果有负环，直接输出 -1 就行了， 否则以 1 号点为起点再跑一遍 SPFA，就能得到正确答案了。（有点意思）</p>
+<h3 id="Code-block"><a href="#Code-block" class="headerlink" title="Code block"></a>Code block</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">4e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> ll INF = <span class="number">1e12</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> head[N], Next[N], ver[N], cnt, ans[N], vis[N];</span><br><span class="line">ll dis[N], edge[N];</span><br><span class="line"><span class="keyword">int</span> n, L, D, x, y, z;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ver[++cnt] = y;</span><br><span class="line">	edge[cnt] = z;</span><br><span class="line">	Next[cnt] = head[x];</span><br><span class="line">	head[x] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">spfa</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) dis[i] = INF;</span><br><span class="line">	<span class="built_in">memset</span>(ans, <span class="number">0</span>, <span class="keyword">sizeof</span>(ans));</span><br><span class="line">	<span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">	dis[x] = <span class="number">0</span>; vis[x] = <span class="number">1</span>; </span><br><span class="line">	<span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">	q.push(x);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x = q.front(); q.pop(); vis[x] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = head[x]; i; i = Next[i])&#123;</span><br><span class="line">			<span class="keyword">int</span> y = ver[i], w = edge[i];</span><br><span class="line">			<span class="keyword">if</span>(dis[y] &gt; dis[x] + w)</span><br><span class="line">			&#123;</span><br><span class="line">				ans[y]++;</span><br><span class="line">				<span class="comment">//cout &lt;&lt; y &lt;&lt; endl;</span></span><br><span class="line">				<span class="keyword">if</span>(ans[y] == n) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">				dis[y] = dis[x] + w;</span><br><span class="line">				<span class="keyword">if</span>(!vis[y]) &#123;</span><br><span class="line">					q.push(y);</span><br><span class="line">					vis[y] = <span class="number">1</span>;</span><br><span class="line">				&#125;		</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dis[n] == INF) <span class="keyword">return</span> <span class="number">-2</span>;</span><br><span class="line">	<span class="keyword">return</span> dis[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;n, &amp;L, &amp;D);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) add(i, i<span class="number">-1</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) add(<span class="number">0</span>, i, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; L; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">		add(x, y, z);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; D; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">		add(y, x, -z);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(spfa(<span class="number">0</span>) == <span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		ll Ans = spfa(<span class="number">1</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, Ans);</span><br><span class="line">	&#125;  </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-解法一： 仿造了动态规划的思想，D[x, y] 表示从1号节点到达基站x，途中已经指定了p条电缆免费时，经过的路径上最贵的电缆的花费最小是多少。那么对于x到y的长度为z的无向边，如果在(x,y,z)上不免费升级，那么可以用 max(D[x, p], z) 更新D[y, p]的最小值；如果在 (x, y, z) 免费升级，可以用 D[x, p] 更新 D[y, p+1] 的最小值。需要借助SPFA经行动态规划，直到所有状态收敛。复杂度为O...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="最短路">最短路</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="二分">二分</a>
-    
-</div>
-            
-        </div>
     </article>
+    <!-- license  -->
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/14/心得/">
-            
-                <span>搭建博客心得</span>
-        </a>
-        <div class="abstract-content">
-            First
-第一次搭建博客 经验及心得总结
-
-这磕磕绊绊也算搭建好了属于自己的博客，花了两天的时间，一路摸索过来，最后总算也有了一个能看的界面，属于不易。原本想在学年设计的时候搞定这个事情的，结果后来忙着复习期末考(其实都是晚上奋笔疾书，落下太多功课了)。趁着这个周末，看着别人的博客，学习了一波Hexo(还没入门)，说实话这个东西还挺好用的，涉及到 git 和 Node.js ， 反正上手还挺快的。最后看了B站上一个小姐姐的视频，选定了这个theme，虽然看着界面单调了，没有什么花里胡哨的，但是看着还算挺舒服的。真的蛮有成就感的，第一次涉及到页面的一些知识，发现写个博客不像发个朋友圈，还...
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://yoursite.com">CHEN</a>
+            </p><p>原文链接：<a href="http://yoursite.com/2019/01/29/DAY4/">http://yoursite.com/2019/01/29/DAY4/</a>
+            </p><p>发表日期：<a href="http://yoursite.com/2019/01/29/DAY4/">January 29th 2019, 8:30:33 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2019/01/29/DAY4/">January 29th 2019, 8:30:56 pm</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="随笔">随笔</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/13/hello-world/">
-            
-                <span>Hello</span>
-        </a>
-        <div class="abstract-content">
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new "My New Post"
-More info: Writing
-Run server1$ hexo server
-More...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Hello">Hello</a>
-    
-</div>
-            
-        </div>
-    </article>
     
     <!-- paginator  -->
-    
-</main>
-            <!-- profile -->
+    <ul class="post-paginator">
+        <li class="next">
             
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src="/avatar/CHEN.jpg">
-    <div class="profile-name">JLINE</div>
-    
-    <div class="profile-signature">
-        Nothing is impossible
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
+        </li>
+        <li class="previous">
             
-                <a href="mailto:775349565@qq.com" class="iconfont-archer email" title="email"></a>
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/01/24/DAY1/" title="二分+最短路">
+                    <div class="prevTitle">二分+最短路</div>
+                </a>
             
-        
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-        
     
-        
-            
-                <span class="iconfont-archer wechat" title="wechat">
-                  
-                  <img class="profile-qr" src="/assets/weichat.png">
-                </span>
-            
-        
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
     
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
     
 
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href="https://llfzllfz.github.io" target="_black">llfz</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="https://yywwann.github.io" target="_black">chy</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="http://47.104.95.59" target="_black">nbut</a>
-                    </span>
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href="/about">ABOUT ME</a>
-        </div>
-    
-</div>
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
             
         </div>
         <footer class="footer footer-unloaded">
@@ -660,6 +528,24 @@ More...
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Code-block"><span class="toc-number">1.</span> <span class="toc-text">Code block</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -859,6 +745,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
