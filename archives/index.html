@@ -346,15 +346,49 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/01/14/new1/">
+        <a class="abstract-title" href="/2019/01/24/DAY1/">
             
-                <span>First</span>
+                <span>二分+最短路</span>
+        </a>
+        <div class="abstract-content">
+            Telephone Lines原题链接：Poj3662
+题目大意 ： 在无向图上求出一条从 1 到 N 的路径，是路径上第 K + 1 大的边权尽量小
+
+解法一： 仿造了动态规划的思想，D[x, y] 表示从1号节点到达基站x，途中已经指定了p条电缆免费时，经过的路径上最贵的电缆的花费最小是多少。那么对于x到y的长度为z的无向边，如果在(x,y,z)上不免费升级，那么可以用 max(D[x, p], z) 更新D[y, p]的最小值；如果在 (x, y, z) 免费升级，可以用 D[x, p] 更新 D[y, p+1] 的最小值。需要借助SPFA经行动态规划，直到所有状态收敛。复杂度为O...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="最短路">最短路</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="二分">二分</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/01/14/心得/">
+            
+                <span>搭建博客心得</span>
         </a>
         <div class="abstract-content">
             First
 第一次搭建博客 经验及心得总结
 
-  这磕磕绊绊也算搭建好了属于自己的博客，花了两天的时间，一路摸索过来，最后总算也有了一个能看的界面，属于不易。原本想在学年设计的时候搞定这个事情的，结果后来忙着复习期末考(其实都是晚上奋笔疾书，落下太多功课了)。趁着这个周末，看着别人的博客，  学习了一波Hexo(还没入门)，说实话这个东西还挺好用的，涉及到 git 和 Node.js ， 反正上手还挺快的。最后看了B站上一个小姐姐的视频，选定了这个theme，虽然看着界面单调了，没有什么花里胡哨的，但是看着还算挺舒服的。真的蛮有成就感的，第一次涉及到页面的一些知识，发现写个博客不像发个朋...
+这磕磕绊绊也算搭建好了属于自己的博客，花了两天的时间，一路摸索过来，最后总算也有了一个能看的界面，属于不易。原本想在学年设计的时候搞定这个事情的，结果后来忙着复习期末考(其实都是晚上奋笔疾书，落下太多功课了)。趁着这个周末，看着别人的博客，学习了一波Hexo(还没入门)，说实话这个东西还挺好用的，涉及到 git 和 Node.js ， 反正上手还挺快的。最后看了B站上一个小姐姐的视频，选定了这个theme，虽然看着界面单调了，没有什么花里胡哨的，但是看着还算挺舒服的。真的蛮有成就感的，第一次涉及到页面的一些知识，发现写个博客不像发个朋友圈，还...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -362,6 +396,12 @@
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/14</span>
             </div>
             <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="随笔">随笔</a>
+    
+</div>
             
         </div>
     </article>
@@ -389,6 +429,12 @@ More...
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/13</span>
             </div>
             <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Hello">Hello</a>
+    
+</div>
             
         </div>
     </article>
@@ -502,9 +548,18 @@ More...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 2
+        Total : 3
         </div>
         <!-- search  -->
         
@@ -520,7 +575,21 @@ More...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2019/01/14/new1/">First</a>
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2019/01/14/心得/">搭建博客心得</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/24/DAY1/">二分+最短路</a>
         </li>
     
     
@@ -541,6 +610,20 @@ More...
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="TTT"><span class="iconfont-archer">&#xe606;</span>TTT</span>
+    
+        <span class="sidebar-tag-name" data-tags="SSS"><span class="iconfont-archer">&#xe606;</span>SSS</span>
+    
+        <span class="sidebar-tag-name" data-tags="W"><span class="iconfont-archer">&#xe606;</span>W</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hello"><span class="iconfont-archer">&#xe606;</span>Hello</span>
+    
+        <span class="sidebar-tag-name" data-tags="最短路"><span class="iconfont-archer">&#xe606;</span>最短路</span>
+    
+        <span class="sidebar-tag-name" data-tags="二分"><span class="iconfont-archer">&#xe606;</span>二分</span>
+    
+        <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -574,6 +657,16 @@ jsonContent:
 </div>
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="D"><span class="iconfont-archer">&#xe60a;</span>D</span>
+    
+        <span class="sidebar-category-name" data-categories="D/Life"><span class="iconfont-archer">&#xe60a;</span>D/Life</span>
+    
+        <span class="sidebar-category-name" data-categories="Life"><span class="iconfont-archer">&#xe60a;</span>Life</span>
+    
+        <span class="sidebar-category-name" data-categories="Life/D"><span class="iconfont-archer">&#xe60a;</span>Life/D</span>
+    
+        <span class="sidebar-category-name" data-categories="最短路"><span class="iconfont-archer">&#xe60a;</span>最短路</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
