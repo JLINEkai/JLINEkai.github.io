@@ -346,27 +346,59 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/01/29/DAY4/">
+        <a class="abstract-title" href="/2019/03/04/每日一题3_4/">
             
-                <span>差分约束</span>
+                <span>传纸条</span>
         </a>
         <div class="abstract-content">
-            [题目连接]洛谷 BZOJ1731推荐洛谷 因为好多OJ这一题数据较水（亲测）
-题意正如其他物种一样，奶牛们也喜欢在排队打饭时与它们的朋友挨在一起。有编号为 1 2…N 的 N头奶牛 (2 ≤ N ≤ 1000)。开始时，奶牛们按照编号顺序来排队。奶牛们很笨拙，因此可能有多头奶牛在同一位置上。
-有些奶牛是好基友，它们希望彼此之间的距离小于等于某个数。有些奶牛是情敌，它们希望彼此之间的距离大于等于某个数。
-给出 ML 对好基友的编号，以及它们希望彼此之间的距离小于等于多少；又给出 MD 对情敌的编号，以及它们希望彼此之间的距离大于等于多少 。(1 ≤ ML,MD ≤ 1e4)
-请计算：如果...
+            传纸条 Day 1原题链接：传送门题目大意：在 m * n 的矩阵中， 从 (1,1) 到 (m, n) 的两条路劲和最大， 并且不相交
+解法一：其实是一个很简单的棋盘形dp，可以直接看成 (1,1) 到 (m, n) 的两条严格不相交路劲。
+直接思维DP，设f[i][j][k][l]为从第一张纸条到达 (i, j) ，第二张纸条 (k,l) 的路径上取得的最大的好心程度和。
+那么特别显然，转移方程是 f[i][j][k][l]=max( f[i][j-1][k-1][l] , f[i-1][j][k][l-1] , f[i][j-1][k][l-1] , f[i-1][j][k-1][...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/29</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/04</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="差分约束">差分约束</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/03/04/提高18_01/">
+            
+                <span>NOIP2018提高Day1</span>
+        </a>
+        <div class="abstract-content">
+            NOIP2018提高Day1 第一题原题链接：传送门
+NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受一下提高组吧！一天一题 (最近学习计算机系统中， 这个东西还蛮有意思)
+
+题目大意：在网友的国度中共有 n 种不同面额的货币，第 i 种货币的面额为 a[i]，你可以假设每一种货币都有无穷多张。为了方便，我们把货币种数为 n 面额数组为 a[1..n] 的货币系统记作 (n,a)。
+在一个完善的货币系统中，每一个非负整数的金额 x 都应该可以被表示出，即对每一个非负整数 x，都存在 n 个非负整数 t[i] 满足 a[i] × t[i] 的和为 x。然而， 在网友的国度中，货币...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
     
 </div>
             

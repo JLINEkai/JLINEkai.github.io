@@ -346,6 +346,71 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/03/04/每日一题3_4/">
+            
+                <span>传纸条</span>
+        </a>
+        <div class="abstract-content">
+            传纸条 Day 1原题链接：传送门题目大意：在 m * n 的矩阵中， 从 (1,1) 到 (m, n) 的两条路劲和最大， 并且不相交
+解法一：其实是一个很简单的棋盘形dp，可以直接看成 (1,1) 到 (m, n) 的两条严格不相交路劲。
+直接思维DP，设f[i][j][k][l]为从第一张纸条到达 (i, j) ，第二张纸条 (k,l) 的路径上取得的最大的好心程度和。
+那么特别显然，转移方程是 f[i][j][k][l]=max( f[i][j-1][k-1][l] , f[i-1][j][k][l-1] , f[i][j-1][k][l-1] , f[i-1][j][k-1][...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/03/04/提高18_01/">
+            
+                <span>NOIP2018提高Day1</span>
+        </a>
+        <div class="abstract-content">
+            NOIP2018提高Day1 第一题原题链接：传送门
+NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受一下提高组吧！一天一题 (最近学习计算机系统中， 这个东西还蛮有意思)
+
+题目大意：在网友的国度中共有 n 种不同面额的货币，第 i 种货币的面额为 a[i]，你可以假设每一种货币都有无穷多张。为了方便，我们把货币种数为 n 面额数组为 a[1..n] 的货币系统记作 (n,a)。
+在一个完善的货币系统中，每一个非负整数的金额 x 都应该可以被表示出，即对每一个非负整数 x，都存在 n 个非负整数 t[i] 满足 a[i] × t[i] 的和为 x。然而， 在网友的国度中，货币...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/03/03/倍增/">
             
                 <span>倍增 + 归并</span>
@@ -532,9 +597,37 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 7
+        Total : 9
         </div>
         <!-- search  -->
         
@@ -550,7 +643,7 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/13/hello-world/">Hello</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/02/27/LCA/">LCA(寒假课件整理)</a>
         </li>
     
     
@@ -564,7 +657,35 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/02/27/LCA/">LCA(寒假课件整理)</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/13/hello-world/">Hello</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href="/2019/03/04/提高18_01/">NOIP2018提高Day1</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/03/04/每日一题3_4/">传纸条</a>
         </li>
     
     
@@ -623,15 +744,17 @@
     
         <span class="sidebar-tag-name" data-tags="二分"><span class="iconfont-archer">&#xe606;</span>二分</span>
     
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
         <span class="sidebar-tag-name" data-tags="差分约束"><span class="iconfont-archer">&#xe606;</span>差分约束</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hello"><span class="iconfont-archer">&#xe606;</span>Hello</span>
     
         <span class="sidebar-tag-name" data-tags="LCA"><span class="iconfont-archer">&#xe606;</span>LCA</span>
     
         <span class="sidebar-tag-name" data-tags="树上差分"><span class="iconfont-archer">&#xe606;</span>树上差分</span>
     
         <span class="sidebar-tag-name" data-tags="set维护"><span class="iconfont-archer">&#xe606;</span>set维护</span>
-    
-        <span class="sidebar-tag-name" data-tags="Hello"><span class="iconfont-archer">&#xe606;</span>Hello</span>
     
         <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
     
