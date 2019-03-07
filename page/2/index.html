@@ -78,8 +78,6 @@
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -203,8 +201,10 @@
 </head>
 
     
+        <body class="home-body">
     
-<header class="header">
+    
+<header class="header index-header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -220,21 +220,34 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            ACM_JLINE.
+            <!-- 文章页  -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
+            
+            
+                Never complain about what has happened, or change it, or accept it quiet.
+            
+            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -346,138 +359,27 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/03/07/每日一练3_7/">
+        <a class="abstract-title" href="/2019/01/13/hello-world/">
             
-                <span>矩阵取数游戏</span>
+                <span>Hello</span>
         </a>
         <div class="abstract-content">
-            矩阵取数游戏原题链接：传送门
-昨天的太难了 今天才想明白 状态转移应该没问题， 后面懒得搞大数了
-
-题目大意：棋盘上 A 点有一个过河卒，需要走到目标 B 点。卒行走的规则：可以向下、或者向右。同时在棋盘上 C 点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。
-棋盘用坐标表示，A点(0, 0) 、B点(n, m) (n, m为不超过20的整数)，同样马的位置坐标是需要给出的。
-现在要求你计算出卒从A点能够到达B点的路径的条数，假设马的位置是固定不动的，并不是卒走一步马走一步。
-题解：签到题 注意别越界  
-Code block123456...
+            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new "My New Post"
+More info: Writing
+Run server1$ hexo server
+More...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/07</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/13</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/05/每日一练3_5/">
-            
-                <span>矩阵取数游戏</span>
-        </a>
-        <div class="abstract-content">
-            矩阵取数游戏原题链接：传送门
-今天的DP总算是算水的了
-
-题目大意：帅帅经常跟同学玩一个矩阵取数游戏：对于一个给定的 n × m 的矩阵，矩阵中的每个元素ai，aj 均为非负整数，游戏规则如下：  
-
-每次取数时须从每行各取走一个元素，共nn个。经过mm次后取完矩阵内所有元素；  
-
-每次取走的各个元素只能是该元素所在行的行首或行尾；  
-
-每次取数都有一个得分值，为每行取数的得分之和，每行取数的得分 = 被取走的元素值  × ( 2 ^ i), 其中i表示第i次取数（从1开始编号）；  
-
-游戏结束总得分为mm次取数得分之和。  
-
-
-帅帅想请你帮忙写一个程序，对于任意矩阵，可以求出取...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/05</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/04/每日一题3_4/">
-            
-                <span>传纸条</span>
-        </a>
-        <div class="abstract-content">
-            传纸条 Day 1原题链接：传送门题目大意：在 m * n 的矩阵中， 从 (1,1) 到 (m, n) 的两条路劲和最大， 并且不相交
-解法一：其实是一个很简单的棋盘形dp，可以直接看成 (1,1) 到 (m, n) 的两条严格不相交路劲。
-直接思维DP，设f[i][j][k][l]为从第一张纸条到达 (i, j) ，第二张纸条 (k,l) 的路径上取得的最大的好心程度和。
-那么特别显然，转移方程是 f[i][j][k][l]=max( f[i][j-1][k-1][l] , f[i-1][j][k][l-1] , f[i][j-1][k][l-1] , f[i-1][j][k-1][...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/04/提高18_01/">
-            
-                <span>NOIP2018提高Day1</span>
-        </a>
-        <div class="abstract-content">
-            NOIP2018提高Day1 第一题原题链接：传送门
-NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受一下提高组吧！一天一题 (最近学习计算机系统中， 这个东西还蛮有意思)
-
-题目大意：在网友的国度中共有 n 种不同面额的货币，第 i 种货币的面额为 a[i]，你可以假设每一种货币都有无穷多张。为了方便，我们把货币种数为 n 面额数组为 a[1..n] 的货币系统记作 (n,a)。
-在一个完善的货币系统中，每一个非负整数的金额 x 都应该可以被表示出，即对每一个非负整数 x，都存在 n 个非负整数 t[i] 满足 a[i] × t[i] 的和为 x。然而， 在网友的国度中，货币...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Hello">Hello</a>
     
 </div>
             
@@ -486,8 +388,107 @@ NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受�
     
     <!-- paginator  -->
     
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+    
 </main>
             <!-- profile -->
+            
+            <div class="profile">
+    <img class="profile-avatar" alt="avatar" src="/avatar/CHEN.jpg">
+    <div class="profile-name">JLINE</div>
+    
+    <div class="profile-signature">
+        Nothing is impossible
+    </div>
+    
+    
+    <div class="profile-social">
+        
+    
+        
+            
+                <a href="mailto:775349565@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/weichat.png">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    
+        <div class="friends">
+            <div>FRIENDS</div>
+            
+                
+                    <span>
+                        <a href="https://llfzllfz.github.io" target="_black">llfz</a>
+                    </span>
+                
+            
+                
+                    <span>
+                        <a href="https://yywwann.github.io" target="_black">chy</a>
+                    </span>
+                
+            
+                
+                    <span>
+                        <a href="http://47.104.95.59" target="_black">nbut</a>
+                    </span>
+                
+            
+        </div>
+    
+    
+        <div class="about-me">
+            <a href="/about">ABOUT ME</a>
+        </div>
+    
+</div>
             
         </div>
         <footer class="footer footer-unloaded">
