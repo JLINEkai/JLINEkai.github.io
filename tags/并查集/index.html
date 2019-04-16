@@ -346,195 +346,28 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/02/27/最短路/">
+        <a class="abstract-title" href="/2019/04/16/并查集/">
             
-                <span>最短路</span>
+                <span>并查集课件</span>
         </a>
         <div class="abstract-content">
-            新年好(cqoi 2005)题目描述重庆城里有n个车站,m条双向公路连接其中的某些车站.每两个车站最多用一条公路连接,从任何一个车站出发都可以经过一条或者多条公路到达其他车站,但不同的路径需要花费的时间可能不同.在一条路径上花费的时间等于路径上所有公路需要的时间之和.佳佳的家在车站1,他有五个亲戚,分别住在车站a,b,c,d,e.过年了,他需要从自己的家出发,拜访每个亲戚(顺序任意),给他们送去节日的祝福.怎样走,才需要最少的时间?
-输入格式 :
-第一行:n,m为车站数目和公路的数目.
-第二行:a,b,c,d,e，为五个亲戚所在车站编号。
-以下m行,每行三个整数x,y,t,为公路连接的两...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="最短路">最短路</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/02/27/LCA/">
-            
-                <span>LCA(寒假课件整理)</span>
-        </a>
-        <div class="abstract-content">
-            How far away原题链接：HDU2586
-题目大意 ： 求一棵树上任意两点的最短距离(裸题)
-题解 ： 最近公共最先裸题 path(l, r) = dist[l] + dist[r] - 2 * dist[lca(l,  r)  
-Code block12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576#include &lt;iostream&gt...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="LCA">LCA</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="树上差分">树上差分</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="set维护">set维护</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/29/DAY4/">
-            
-                <span>差分约束</span>
-        </a>
-        <div class="abstract-content">
-            [题目连接]洛谷 BZOJ1731推荐洛谷 因为好多OJ这一题数据较水（亲测）
-题意正如其他物种一样，奶牛们也喜欢在排队打饭时与它们的朋友挨在一起。有编号为 1 2…N 的 N头奶牛 (2 ≤ N ≤ 1000)。开始时，奶牛们按照编号顺序来排队。奶牛们很笨拙，因此可能有多头奶牛在同一位置上。
-有些奶牛是好基友，它们希望彼此之间的距离小于等于某个数。有些奶牛是情敌，它们希望彼此之间的距离大于等于某个数。
-给出 ML 对好基友的编号，以及它们希望彼此之间的距离小于等于多少；又给出 MD 对情敌的编号，以及它们希望彼此之间的距离大于等于多少 。(1 ≤ ML,MD ≤ 1e4)
-请计算：如果...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="差分约束">差分约束</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/24/DAY1/">
-            
-                <span>二分+最短路</span>
-        </a>
-        <div class="abstract-content">
-            Telephone Lines原题链接：Poj3662
-题目大意 ： 在无向图上求出一条从 1 到 N 的路径，是路径上第 K + 1 大的边权尽量小
+            并查集
+(当然又是备课)
 
-解法一： 仿造了动态规划的思想，D[x, y] 表示从1号节点到达基站x，途中已经指定了p条电缆免费时，经过的路径上最贵的电缆的花费最小是多少。那么对于x到y的长度为z的无向边，如果在(x,y,z)上不免费升级，那么可以用 max(D[x, p], z) 更新D[y, p]的最小值；如果在 (x, y, z) 免费升级，可以用 D[x, p] 更新 D[y, p+1] 的最小值。需要借助SPFA经行动态规划，直到所有状态收敛。复杂度为O...
+程序自动分析原题链接：NOI 2015题目大意：给你两个值，告诉你相等或者不相等，问最后是否有矛盾的。
+题解：并查集裸题由于数字范围比较大，所以简单离散化一下直接贴代码
+Code block12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273#include &lt;iostream&gt;#include &lt;cstdio&gt;#in...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/24</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/16</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="二分">二分</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="最短路">最短路</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/14/心得/">
-            
-                <span>搭建博客心得</span>
-        </a>
-        <div class="abstract-content">
-            First
-第一次搭建博客 经验及心得总结
-
-这磕磕绊绊也算搭建好了属于自己的博客，花了两天的时间，一路摸索过来，最后总算也有了一个能看的界面，属于不易。原本想在学年设计的时候搞定这个事情的，结果后来忙着复习期末考(其实都是晚上奋笔疾书，落下太多功课了)。趁着这个周末，看着别人的博客，学习了一波Hexo(还没入门)，说实话这个东西还挺好用的，涉及到 git 和 Node.js ， 反正上手还挺快的。最后看了B站上一个小姐姐的视频，选定了这个theme，虽然看着界面单调了，没有什么花里胡哨的，但是看着还算挺舒服的。真的蛮有成就感的，第一次涉及到页面的一些知识，发现写个博客不像发个朋友圈，还...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="随笔">随笔</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/13/hello-world/">
-            
-                <span>Hello</span>
-        </a>
-        <div class="abstract-content">
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new "My New Post"
-More info: Writing
-Run server1$ hexo server
-More...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/13</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Hello">Hello</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="并查集">并查集</a>
     
 </div>
             
@@ -542,10 +375,6 @@ More...
     </article>
     
     <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2019/">&#60; PREV</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
     
 </main>
             <!-- profile -->

@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="CHEN">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="CHEN">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>并查集课件 · ACM_JLINE</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin="">
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin="">
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">ACM_JLINE.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">并查集课件</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">ACM_JLINE.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/IMG.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            并查集课件
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="并查集">并查集</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2.8k</span>阅读时长: <span class="post-count reading-time">14 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/04/16</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h1><blockquote>
+<p>(当然又是备课)</p>
+</blockquote>
+<h2 id="程序自动分析"><a href="#程序自动分析" class="headerlink" title="程序自动分析"></a>程序自动分析</h2><h2 id="原题链接：NOI-2015"><a href="#原题链接：NOI-2015" class="headerlink" title="原题链接：NOI 2015"></a>原题链接：<a href="https://www.luogu.org/problemnew/show/P1955" target="_blank" rel="noopener">NOI 2015</a></h2><h3 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a><strong>题目大意</strong>：</h3><p>给你两个值，告诉你相等或者不相等，问最后是否有矛盾的。</p>
+<h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a><strong>题解</strong>：</h3><p>并查集裸题<br>由于数字范围比较大，所以简单离散化一下<br>直接贴代码</p>
+<h3 id="Code-block"><a href="#Code-block" class="headerlink" title="Code block"></a>Code block</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200005</span>;</span><br><span class="line"><span class="keyword">int</span> fa[N], x, y, z, b[N];</span><br><span class="line"><span class="keyword">int</span> n, t, m, cnt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x, y, f; </span><br><span class="line">&#125;a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fa[x] == x ? x : fa[x] = find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx = find(x), fy = find(y);</span><br><span class="line">	<span class="keyword">if</span>(fx == fy) <span class="keyword">return</span> ;</span><br><span class="line">	</span><br><span class="line">	fa[fx] = fy;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	cnt = <span class="number">0</span>;</span><br><span class="line">	m = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a[i].x, &amp;a[i].y, &amp;a[i].f);</span><br><span class="line">		b[cnt++] = a[i].x;</span><br><span class="line">		b[cnt++] = a[i].y;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	sort(b, b + cnt);</span><br><span class="line">	m = unique(b, b + cnt) - b;        <span class="comment">//去重</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++)&#123;  <span class="comment">//离散化过后这个地方要小心！！！不能 i = 1</span></span><br><span class="line">		fa[i] = i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		<span class="keyword">int</span> f = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		Init();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> x = lower_bound(b, b + m, a[i].x) - b;</span><br><span class="line">			<span class="keyword">int</span> y = lower_bound(b, b + m, a[i].y) - b;</span><br><span class="line">			<span class="keyword">if</span>(a[i].f == <span class="number">1</span>)&#123;</span><br><span class="line">				merge(x, y);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> x = lower_bound(b, b + m, a[i].x) - b;</span><br><span class="line">			<span class="keyword">int</span> y = lower_bound(b, b + m, a[i].y) - b;</span><br><span class="line">			<span class="keyword">if</span>(a[i].f == <span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">int</span> fx = find(x), fy = find(y);</span><br><span class="line">				<span class="keyword">if</span>(fx == fy)&#123;</span><br><span class="line">					f = <span class="number">1</span>;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(f == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="“扩展域”-与-“边带权”-的并查集"><a href="#“扩展域”-与-“边带权”-的并查集" class="headerlink" title="“扩展域” 与 “边带权” 的并查集"></a>“扩展域” 与 “边带权” 的并查集</h1></blockquote>
+<h2 id="分数调查"><a href="#分数调查" class="headerlink" title="分数调查"></a>分数调查</h2><h2 id="原题链接：hiho-1515"><a href="#原题链接：hiho-1515" class="headerlink" title="原题链接：hiho 1515"></a>原题链接：<a href="http://hihocoder.com/problemset/problem/1515" target="_blank" rel="noopener">hiho 1515</a></h2><h3 id="题目大意：-1"><a href="#题目大意：-1" class="headerlink" title="题目大意："></a><strong>题目大意</strong>：</h3><p>告诉你多对两个人之间的分数差关系，求任意两个人的分数差</p>
+<h3 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a><strong>题解</strong>：</h3><p>带权并查集</p>
+<h3 id="Code-block-1"><a href="#Code-block-1" class="headerlink" title="Code block"></a>Code block</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> d[N], fa[N], x, y, z, n, m, t;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(fa[x] == x) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">int</span> root = find(fa[x]);</span><br><span class="line">	d[x] += d[fa[x]];  <span class="comment">//边权求和</span></span><br><span class="line">	<span class="keyword">return</span> fa[x] = root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx = find(x), fy = find(y);</span><br><span class="line">	<span class="keyword">if</span>(fx == fy) <span class="keyword">return</span> ;</span><br><span class="line">	</span><br><span class="line">	fa[fx] = fy;</span><br><span class="line">	</span><br><span class="line">	d[fx] = w - d[x] + d[y]; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;t);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		fa[i] = i;</span><br><span class="line">		d[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">		merge(x, y, z);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</span><br><span class="line">		<span class="keyword">if</span>(find(x) != find(y))&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, d[x] - d[y]);</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="银河传说英雄"><a href="#银河传说英雄" class="headerlink" title="银河传说英雄"></a>银河传说英雄</h2><h2 id="原题链接：NOI-2002"><a href="#原题链接：NOI-2002" class="headerlink" title="原题链接：NOI 2002"></a>原题链接：<a href="https://www.luogu.org/problemnew/show/P1196" target="_blank" rel="noopener">NOI 2002</a></h2><h3 id="题目大意：-2"><a href="#题目大意：-2" class="headerlink" title="题目大意："></a><strong>题目大意</strong>：</h3><p>有一个划分成N列的星际战场，各列依次编号为1，2，… ，N。有N艘战舰, 也依次编号为1，2，…，N，其中第 i 号战舰处于第 i 列<br>有M条指令，每条指令格式为以下两种之一：  </p>
+<p> 1．M i j，表示让第号战舰所在列的全部战舰保持原有顺序，接在弟j号战舰所在列的尾部。<br> 2．C i j，表示询问第号战舰与第号战舰当前是否处于同一列中，如果在同列中，它们之间间隔了多少艘战舰。<br>M ≤ 3000 M ≤ 5e5。</p>
+<h3 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a><strong>题解</strong>：</h3><p>带权并查集<br>用size[] 记录每个树根上集合大小，merge时更新一下。</p>
+<h3 id="Code-block-2"><a href="#Code-block-2" class="headerlink" title="Code block"></a>Code block</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">30005</span>;</span><br><span class="line"><span class="keyword">int</span> fa[N];</span><br><span class="line"><span class="keyword">int</span> d[N], size[N];</span><br><span class="line"><span class="keyword">int</span> t, x, y;</span><br><span class="line"><span class="keyword">char</span> ch;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x == fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">int</span> root = find(fa[x]);</span><br><span class="line">	d[x] += d[fa[x]];</span><br><span class="line">	<span class="keyword">return</span> fa[x] = root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx = find(x);</span><br><span class="line">	<span class="keyword">int</span> fy = find(y);</span><br><span class="line">	fa[fx] = fy;</span><br><span class="line">	d[fx] = size[fy];</span><br><span class="line">	size[fy] += size[fx];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; i++)&#123;</span><br><span class="line">		fa[i] = i;</span><br><span class="line">		d[i] = <span class="number">0</span>;</span><br><span class="line">		size[i] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; ch &gt;&gt; x &gt;&gt; y;</span><br><span class="line">		<span class="keyword">if</span>(ch == <span class="string">'M'</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> fx = find(x), fy = find(y);</span><br><span class="line">			merge(x, y);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">'C'</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> fx = find(x), fy = find(y);</span><br><span class="line">			<span class="keyword">if</span>(fx != fy) &#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="built_in">abs</span>(d[x] - d[y]) - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Parity-game"><a href="#Parity-game" class="headerlink" title="Parity game"></a>Parity game</h2><h2 id="原题链接：POJ-1733"><a href="#原题链接：POJ-1733" class="headerlink" title="原题链接：POJ 1733"></a>原题链接：<a href="http://poj.org/problem?id=1733" target="_blank" rel="noopener">POJ 1733</a></h2><h3 id="题目大意：-3"><a href="#题目大意：-3" class="headerlink" title="题目大意："></a><strong>题目大意</strong>：</h3><p> 输入 n 表示有一个长度为 n 的 0, 1 字符串, m 表示接下来有 m 行输入, 接下来的 m 行输入中 x, y, even 表示第 x 到第 y 个字符中间 1 的个数为偶数个, x, y, odd 表示第 x 到第 y 个字符中间 1 的个数为奇数个, 若 m 句话中第 k + 1 是第一次与前面的话矛盾,输出 k </p>
+<h3 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a><strong>题解</strong>：</h3><p>奇偶，对对对就是异或</p>
+<blockquote>
+<p>“边带权”   </p>
+</blockquote>
+<h3 id="Code-block-3"><a href="#Code-block-3" class="headerlink" title="Code block"></a>Code block</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">20005</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l, r, f;</span><br><span class="line">&#125;q[N];</span><br><span class="line"><span class="keyword">int</span> fa[N], a[N], d[N], x, y, n, t;</span><br><span class="line"><span class="keyword">char</span> ch[<span class="number">5</span>];</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%s"</span>, &amp;q[i].l, &amp;q[i].r, ch);</span><br><span class="line">		q[i].f = (ch[<span class="number">0</span>] == <span class="string">'o'</span> ? <span class="number">1</span> : <span class="number">0</span>);</span><br><span class="line">		a[cnt++] = q[i].l - <span class="number">1</span>;</span><br><span class="line">		a[cnt++] = q[i].r;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(a, a + cnt);</span><br><span class="line">	n = unique(a, a + cnt) - a;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		fa[i] = i;</span><br><span class="line">		d[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x == fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">int</span> root = find(fa[x]);</span><br><span class="line">	d[x] ^= d[fa[x]];</span><br><span class="line">	<span class="keyword">return</span> fa[x] = root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x = lower_bound(a, a + n, q[i].l - <span class="number">1</span>) - a;</span><br><span class="line">		<span class="keyword">int</span> y = lower_bound(a, a + n, q[i].r) - a;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> fx = find(x), fy = find(y);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(fx == fy)&#123;</span><br><span class="line">			<span class="keyword">if</span>((d[x] ^ d[y]) != q[i].f)&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, i <span class="number">-1</span>);</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			fa[fx] = fy;</span><br><span class="line">			d[fx] = d[x] ^ d[y] ^ q[i].f;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, t);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>“扩展域”  (个人感觉这题这样解法比较容易写)</p>
+</blockquote>
+<h3 id="Code-block-4"><a href="#Code-block-4" class="headerlink" title="Code block"></a>Code block</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">20005</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l, r, f;</span><br><span class="line">&#125;q[N];</span><br><span class="line"><span class="keyword">int</span> fa[<span class="number">2</span> * N], a[N], x, y, n, t;</span><br><span class="line"><span class="keyword">char</span> ch[<span class="number">5</span>];</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%s"</span>, &amp;q[i].l, &amp;q[i].r, ch);</span><br><span class="line">		q[i].f = (ch[<span class="number">0</span>] == <span class="string">'o'</span> ? <span class="number">1</span> : <span class="number">0</span>);</span><br><span class="line">		a[cnt++] = q[i].l - <span class="number">1</span>;</span><br><span class="line">		a[cnt++] = q[i].r;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(a, a + cnt);</span><br><span class="line">	n = unique(a, a + cnt) - a;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">2</span> * n; i++)&#123;</span><br><span class="line">		fa[i] = i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fa[x] == x ? x : fa[x] = find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> x = lower_bound(a, a + n, q[i].l - <span class="number">1</span>) - a;</span><br><span class="line">		<span class="keyword">int</span> y = lower_bound(a, a + n, q[i].r) - a;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> x_odd = x, x_even = x + n;</span><br><span class="line">		<span class="keyword">int</span> y_odd = y, y_even = y + n;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(q[i].f == <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(find(x_odd) == find(y_even))&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, i - <span class="number">1</span>);</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				fa[find(x_odd)] = find(y_odd);</span><br><span class="line">				fa[find(x_even)] = find(y_even);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(find(x_odd) == find(y_odd))&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, i - <span class="number">1</span>);</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				fa[find(x_odd)] = find(y_even);</span><br><span class="line">				fa[find(x_even)] = find(y_odd);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, t);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="食物链"><a href="#食物链" class="headerlink" title="食物链"></a>食物链</h2><h2 id="原题链接：POJ-1182"><a href="#原题链接：POJ-1182" class="headerlink" title="原题链接：POJ 1182"></a>原题链接：<a href="http://poj.org/problem?id=1182" target="_blank" rel="noopener">POJ 1182</a></h2><h3 id="题目大意：-4"><a href="#题目大意：-4" class="headerlink" title="题目大意："></a><strong>题目大意</strong>：</h3><p>动物王国中有三类动物A, B, C，这三类动物的食物链构成了有趣的环形。A 吃 B， B 吃 C，C 吃 A。<br>现有 N 个动物，以 1 － N 编号。每个动物都是 A, B, C 中的一种，但是我们并不知道它到底是哪一种。<br>有人用两种说法对这 N 个动物所构成的食物链关系进行描述：<br>第一种说法是”1 X Y”，表示X和Y是同类。<br>第二种说法是”2 X Y”，表示X吃Y。<br>此人对N个动物，用上述两种说法，一句接一句地说出K句话，这K句话有的是真的，有的是假的。当一句话满足下列三条之一时，这句话就是假话，否则就是真话。<br>1）    当前的话与前面的某些真的话冲突，就是假话；<br>2）    当前的话中 X 或 Y 比 N 大，就是假话；<br>3）    当前的话表示 X 吃 X ，就是假话。<br>你的任务是根据给定的N（1 &lt;= N &lt;= 50,000）和K句话（0 &lt;= K &lt;= 100,000），输出假话的总数。 </p>
+<h3 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a><strong>题解</strong>：</h3><p>每个动物拆成三个节点，同类域 捕食域 天敌域<br>矛盾情况：<br>“x 与 y 是同类”</p>
+<ol>
+<li>x 捕食域 与 y 同类域 在同一集合，说明 x 吃 y。</li>
+<li>x 同类域 与 y 捕食域 在同一集合，说明 y 吃 x。    </li>
+</ol>
+<p>“x 吃 y”  </p>
+<ol>
+<li>x 同类域 与 y 同类域 在同一集合，说明 x 与 y 是同类。  </li>
+<li>x 同类域 与 y 捕食域 在同一集合，说明 y 吃 x。</li>
+</ol>
+<h3 id="Code-block-5"><a href="#Code-block-5" class="headerlink" title="Code block"></a>Code block</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300005</span>; </span><br><span class="line"><span class="keyword">int</span> x, y, z, n, t, d, cnt;</span><br><span class="line"><span class="keyword">int</span> fa[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fa[x] == x ? x : fa[x] = find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span> * n; i++)&#123;</span><br><span class="line">		fa[i] = i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;d, &amp;x, &amp;y);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(x &gt; n || y &gt; n)&#123;</span><br><span class="line">			cnt++;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> x1 = x, x2 = x + n, x3 = x + <span class="number">2</span> * n;</span><br><span class="line">		<span class="keyword">int</span> y1 = y, y2 = y + n, y3 = y + <span class="number">2</span> * n;</span><br><span class="line">		<span class="keyword">if</span>(d == <span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(find(x2) == find(y1) || find(x1) == find(y2))&#123;</span><br><span class="line">				cnt++;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				fa[find(x1)] = find(y1);</span><br><span class="line">				fa[find(x2)] = find(y2);</span><br><span class="line">				fa[find(x3)] = find(y3);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(find(x1) == find(y1) || find(x1) == find(y2) || x == y)&#123;</span><br><span class="line">				cnt++;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				fa[find(x1)] = find(y3);</span><br><span class="line">				fa[find(x2)] = find(y1);</span><br><span class="line">				fa[find(x3)] = find(y2);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, cnt);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Rochambeau"><a href="#Rochambeau" class="headerlink" title="Rochambeau"></a>Rochambeau</h2><h2 id="原题链接：POJ-2912"><a href="#原题链接：POJ-2912" class="headerlink" title="原题链接：POJ 2912"></a>原题链接：<a href="http://poj.org/problem?id=2912" target="_blank" rel="noopener">POJ 2912</a></h2><h3 id="题目大意：-5"><a href="#题目大意：-5" class="headerlink" title="题目大意："></a><strong>题目大意</strong>：</h3><p>石头剪刀布游戏 只有一个人是可以变化的，其余的只会出一种手势，问能否找出那个人。</p>
+<h3 id="题解：-5"><a href="#题解：-5" class="headerlink" title="题解："></a><strong>题解</strong>：</h3><p>暴力枚举每个人是那个特殊人的情况<br>先去掉与当前枚举有关的信息 看看是否会出现矛盾<br>不知道为什么搞了一下扩展域，差点调不出来。<br><strong>这题还是比较好玩的！！！</strong></p>
+<h3 id="Code-block-6"><a href="#Code-block-6" class="headerlink" title="Code block"></a>Code block</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10005</span>;</span><br><span class="line"><span class="keyword">int</span> fa[N], x, y, n, m;</span><br><span class="line"><span class="keyword">int</span> a[N], b[N]; </span><br><span class="line"><span class="keyword">char</span> ch[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fa[x] == x ? x : fa[x] = find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx = find(x);</span><br><span class="line">	<span class="keyword">int</span> fy = find(y);</span><br><span class="line">	<span class="keyword">if</span>(x == y) <span class="keyword">return</span> ;</span><br><span class="line">	fa[fx] = fy;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> h = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;  <span class="comment">//枚举裁判 </span></span><br><span class="line">	</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">3</span> * n; j++)&#123; <span class="comment">//初始化 </span></span><br><span class="line">			fa[j] = j;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[j] == i || b[j] == i) <span class="keyword">continue</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> x1 = a[j], x2 = n + x1, x3 = <span class="number">2</span> * n + x1;</span><br><span class="line">			<span class="keyword">int</span> y1 = b[j], y2 = n + y1, y3 = <span class="number">2</span> * n + y1;</span><br><span class="line">			<span class="keyword">if</span>(ch[j] == <span class="string">'='</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(find(x1) == find(y2) || find(x1) == find(y3) </span><br><span class="line">				|| find(x2) == find(y1) || find(x2) == find(y3)</span><br><span class="line">				|| find(x3) == find(y1) || find(x3) == find(y2))</span><br><span class="line">				&#123;</span><br><span class="line">					flag = <span class="number">1</span>;h = max(h, j);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					merge(x1, y1);</span><br><span class="line">					merge(x2, y2);</span><br><span class="line">					merge(x3, y3);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(ch[j] == <span class="string">'&lt;'</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(find(x1) == find(y1) || find(x1) == find(y2) </span><br><span class="line">				|| find(x2) == find(y2) || find(x2) == find(y3)</span><br><span class="line">				|| find(x3) == find(y1) || find(x3) == find(y3))</span><br><span class="line">				&#123;</span><br><span class="line">					flag = <span class="number">1</span>;h = max(h, j);</span><br><span class="line">					<span class="keyword">break</span>;	</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					merge(x1, y3);</span><br><span class="line">					merge(x2, y1);</span><br><span class="line">					merge(x3, y2);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(ch[j] == <span class="string">'&gt;'</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(find(x1) == find(y1) || find(x1) == find(y3) </span><br><span class="line">				|| find(x2) == find(y1) || find(x2) == find(y2)</span><br><span class="line">				|| find(x3) == find(y2) || find(x3) == find(y3))</span><br><span class="line">				&#123;</span><br><span class="line">					flag = <span class="number">1</span>;h = max(h, j);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					merge(x1, y2);</span><br><span class="line">					merge(x2, y3);</span><br><span class="line">					merge(x3, y1);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(flag == <span class="number">0</span>)&#123; <span class="comment">//没矛盾 </span></span><br><span class="line">			num++;</span><br><span class="line">			ans = i; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(num == <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Impossible\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(num == <span class="number">1</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Player %d can be determined to be the judge after %d lines\n"</span>, ans, h);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Can not determine\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m))&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; a[i] &gt;&gt; ch[i] &gt;&gt; b[i];</span><br><span class="line">		&#125;</span><br><span class="line">		solve();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://yoursite.com">CHEN</a>
+            </p><p>原文链接：<a href="http://yoursite.com/2019/04/16/并查集/">http://yoursite.com/2019/04/16/并查集/</a>
+            </p><p>发表日期：<a href="http://yoursite.com/2019/04/16/并查集/">April 16th 2019, 9:00:22 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2019/04/16/并查集/">April 16th 2019, 9:00:08 pm</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/04/01/Codeforces550/" title="CF 550 Div. 3">
+                    <div class="prevTitle">CF 550 Div. 3</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:775349565@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/weichat.png">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#并查集"><span class="toc-number">1.</span> <span class="toc-text">并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#程序自动分析"><span class="toc-number">1.1.</span> <span class="toc-text">程序自动分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原题链接：NOI-2015"><span class="toc-number">1.2.</span> <span class="toc-text">原题链接：NOI 2015</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目大意："><span class="toc-number">1.2.1.</span> <span class="toc-text">题目大意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解："><span class="toc-number">1.2.2.</span> <span class="toc-text">题解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code-block"><span class="toc-number">1.2.3.</span> <span class="toc-text">Code block</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#“扩展域”-与-“边带权”-的并查集"><span class="toc-number">2.</span> <span class="toc-text">“扩展域” 与 “边带权” 的并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分数调查"><span class="toc-number">2.1.</span> <span class="toc-text">分数调查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原题链接：hiho-1515"><span class="toc-number">2.2.</span> <span class="toc-text">原题链接：hiho 1515</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目大意：-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">题目大意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解：-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">题解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code-block-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">Code block</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#银河传说英雄"><span class="toc-number">2.3.</span> <span class="toc-text">银河传说英雄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原题链接：NOI-2002"><span class="toc-number">2.4.</span> <span class="toc-text">原题链接：NOI 2002</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目大意：-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">题目大意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解：-2"><span class="toc-number">2.4.2.</span> <span class="toc-text">题解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code-block-2"><span class="toc-number">2.4.3.</span> <span class="toc-text">Code block</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Parity-game"><span class="toc-number">2.5.</span> <span class="toc-text">Parity game</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原题链接：POJ-1733"><span class="toc-number">2.6.</span> <span class="toc-text">原题链接：POJ 1733</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目大意：-3"><span class="toc-number">2.6.1.</span> <span class="toc-text">题目大意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解：-3"><span class="toc-number">2.6.2.</span> <span class="toc-text">题解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code-block-3"><span class="toc-number">2.6.3.</span> <span class="toc-text">Code block</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code-block-4"><span class="toc-number">2.6.4.</span> <span class="toc-text">Code block</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#食物链"><span class="toc-number">2.7.</span> <span class="toc-text">食物链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原题链接：POJ-1182"><span class="toc-number">2.8.</span> <span class="toc-text">原题链接：POJ 1182</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目大意：-4"><span class="toc-number">2.8.1.</span> <span class="toc-text">题目大意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解：-4"><span class="toc-number">2.8.2.</span> <span class="toc-text">题解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code-block-5"><span class="toc-number">2.8.3.</span> <span class="toc-text">Code block</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rochambeau"><span class="toc-number">2.9.</span> <span class="toc-text">Rochambeau</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原题链接：POJ-2912"><span class="toc-number">2.10.</span> <span class="toc-text">原题链接：POJ 2912</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目大意：-5"><span class="toc-number">2.10.1.</span> <span class="toc-text">题目大意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解：-5"><span class="toc-number">2.10.2.</span> <span class="toc-text">题解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code-block-6"><span class="toc-number">2.10.3.</span> <span class="toc-text">Code block</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 16
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/每日一练3_12/">搜索（剪枝）</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/04/16/并查集/">并查集课件</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span><a class="archive-post-title" href="/2019/04/01/Codeforces550/">CF 550 Div. 3</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href="/2019/03/14/贪心/">贪心课件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href="/2019/03/07/每日一练3_7/">矩阵取数游戏</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href="/2019/03/05/每日一练3_5/">矩阵取数游戏</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href="/2019/03/04/提高18_01/">NOIP2018提高Day1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href="/2019/03/03/倍增/">倍增 + 归并</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/02/27/LCA/">LCA(寒假课件整理)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/24/DAY1/">二分+最短路</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/03/04/每日一题3_4/">传纸条</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/13/hello-world/">Hello</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href="/2019/02/27/最短路/">最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2019/01/29/DAY4/">差分约束</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2019/01/14/心得/">搭建博客心得</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/03/12/Codeforces545/">CF 545 Div. 2</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="二分图"><span class="iconfont-archer">&#xe606;</span>二分图</span>
+    
+        <span class="sidebar-tag-name" data-tags="KMP"><span class="iconfont-archer">&#xe606;</span>KMP</span>
+    
+        <span class="sidebar-tag-name" data-tags="二分"><span class="iconfont-archer">&#xe606;</span>二分</span>
+    
+        <span class="sidebar-tag-name" data-tags="LCA"><span class="iconfont-archer">&#xe606;</span>LCA</span>
+    
+        <span class="sidebar-tag-name" data-tags="树上差分"><span class="iconfont-archer">&#xe606;</span>树上差分</span>
+    
+        <span class="sidebar-tag-name" data-tags="set维护"><span class="iconfont-archer">&#xe606;</span>set维护</span>
+    
+        <span class="sidebar-tag-name" data-tags="差分约束"><span class="iconfont-archer">&#xe606;</span>差分约束</span>
+    
+        <span class="sidebar-tag-name" data-tags="最短路"><span class="iconfont-archer">&#xe606;</span>最短路</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hello"><span class="iconfont-archer">&#xe606;</span>Hello</span>
+    
+        <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
+    
+        <span class="sidebar-tag-name" data-tags="DFS"><span class="iconfont-archer">&#xe606;</span>DFS</span>
+    
+        <span class="sidebar-tag-name" data-tags="倍增"><span class="iconfont-archer">&#xe606;</span>倍增</span>
+    
+        <span class="sidebar-tag-name" data-tags="归并"><span class="iconfont-archer">&#xe606;</span>归并</span>
+    
+        <span class="sidebar-tag-name" data-tags="贪心"><span class="iconfont-archer">&#xe606;</span>贪心</span>
+    
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+    
+        <span class="sidebar-tag-name" data-tags="并查集"><span class="iconfont-archer">&#xe606;</span>并查集</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="ACM"><span class="iconfont-archer">&#xe60a;</span>ACM</span>
+    
+        <span class="sidebar-category-name" data-categories="最短路"><span class="iconfont-archer">&#xe60a;</span>最短路</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "CHEN"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
