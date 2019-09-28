@@ -346,28 +346,28 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/03/12/每日一练3_12/">
+        <a class="abstract-title" href="/2019/09/28/树状数组/">
             
-                <span>搜索（剪枝）</span>
+                <span>树状数组</span>
         </a>
         <div class="abstract-content">
-            DFS + 剪枝原题链接：传送门
- CF C题
-
-题目大意：有 2n 个基地，其中 k 个基地是有复仇者的，问把 1 - 2n 个基地都摧毁需要最小的代价。摧毁一段区间的地基可以选择直接摧毁，代价是 A * na * l , A 题目会直接告诉你， na 区间内存在复仇者的数量，l 是区间长度；或者你也可以把这个大区间平均分成两半， 仍然按之前的方法计算， 然后如果小区间不存在复仇者， 那么摧毁这段的代价直接为 B。
-数据范围 :n (1 ≤ n ≤ 30)k (1 ≤ k ≤ 105)A, B ( 1 ≤ A, B ≤ 104)
-题解：这个模型是不是很像线段树，可是 2n 太大了。如果...
+            树状数组POJ2182题目：
+有n头奶牛，已知它们的身高为 1~n 且各不相同，但不知道每头奶牛的具体身高.  现在这n头奶牛站成一列，已知第i头牛前面有Ai头牛比它低，求每头奶牛的身高.
+解题思路：
+首先记录一个01序列，起初都为1，从n到1倒着操作，每次查找第Ai + 1小的数即可，然后把那个数后面那个数标记成0 . 前缀和用树状数组维护,查找用二分
+二分 + 树状数组
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include &l...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/12</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/28</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="DFS">DFS</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="树状数组">树状数组</a>
     
 </div>
             
