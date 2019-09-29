@@ -346,6 +346,39 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/09/29/找集合/">
+            
+                <span>找集合</span>
+        </a>
+        <div class="abstract-content">
+            找集合CF1230D题目：
+n 个数中找到一个集合，在二进制下第 i 位数为 1 的数不能只有 1 个。
+解题思路：
+如果一个数字出现两次及以上，就先加入集合。然后以这个集合去扩大。
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &lt;iostream&gt;#include &lt;algorithm&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;map&gt...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/29</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="贪心 map">贪心 map</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/09/28/树状数组/">
             
                 <span>树状数组</span>
@@ -537,9 +570,9 @@ Code block123456789101112131415161718192021222324252627282930313233343536#includ
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="KMP">KMP</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags="二分">二分</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="KMP">KMP</a>
     
 </div>
             
@@ -640,39 +673,6 @@ Code block123456...
 解法一：其实是一个很简单的棋盘形dp，可以直接看成 (1,1) 到 (m, n) 的两条严格不相交路劲。
 直接思维DP，设f[i][j][k][l]为从第一张纸条到达 (i, j) ，第二张纸条 (k,l) 的路径上取得的最大的好心程度和。
 那么特别显然，转移方程是 f[i][j][k][l]=max( f[i][j-1][k-1][l] , f[i-1][j][k][l-1] , f[i][j-1][k][l-1] , f[i-1][j][k-1][...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/04/提高18_01/">
-            
-                <span>NOIP2018提高Day1</span>
-        </a>
-        <div class="abstract-content">
-            NOIP2018提高Day1 第一题原题链接：传送门
-NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受一下提高组吧！一天一题 (最近学习计算机系统中， 这个东西还蛮有意思)
-
-题目大意：在网友的国度中共有 n 种不同面额的货币，第 i 种货币的面额为 a[i]，你可以假设每一种货币都有无穷多张。为了方便，我们把货币种数为 n 面额数组为 a[1..n] 的货币系统记作 (n,a)。
-在一个完善的货币系统中，每一个非负整数的金额 x 都应该可以被表示出，即对每一个非负整数 x，都存在 n 个非负整数 t[i] 满足 a[i] × t[i] 的和为 x。然而， 在网友的国度中，货币...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1006,9 +1006,50 @@ NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 17
+        Total : 18
         </div>
         <!-- search  -->
         
@@ -1024,7 +1065,7 @@ NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/04</span><a class="archive-post-title" href="/2019/03/04/提高18_01/">NOIP2018提高Day1</a>
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2019/01/14/心得/">搭建博客心得</a>
         </li>
     
     
@@ -1052,7 +1093,35 @@ NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2019/01/14/心得/">搭建博客心得</a>
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href="/2019/03/04/提高18_01/">NOIP2018提高Day1</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/24/DAY1/">二分+最短路</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href="/2019/02/27/最短路/">最短路</a>
         </li>
     
     
@@ -1080,7 +1149,7 @@ NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/每日一练3_12/">搜索（剪枝）</a>
+            <span class="archive-post-date">03/05</span><a class="archive-post-title" href="/2019/03/05/每日一练3_5/">矩阵取数游戏</a>
         </li>
     
     
@@ -1094,7 +1163,49 @@ NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/24/DAY1/">二分+最短路</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/02/27/LCA/">LCA(寒假课件整理)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/03/04/每日一题3_4/">传纸条</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/13/hello-world/">Hello</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/09/29/找集合/">找集合</a>
         </li>
     
     
@@ -1123,12 +1234,12 @@ NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/07</span><a class="archive-post-title" href="/2019/03/07/每日一练3_7/">矩阵取数游戏</a>
+            <span class="archive-post-date">03/12</span><a class="archive-post-title" href="/2019/03/12/每日一练3_12/">搜索（剪枝）</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/05</span><a class="archive-post-title" href="/2019/03/05/每日一练3_5/">矩阵取数游戏</a>
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href="/2019/03/07/每日一练3_7/">矩阵取数游戏</a>
         </li>
     
     
@@ -1137,64 +1248,8 @@ NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受�
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/13/hello-world/">Hello</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/03/04/每日一题3_4/">传纸条</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/27</span><a class="archive-post-title" href="/2019/02/27/最短路/">最短路</a>
-        </li>
-    
-    
         <li class="archive-post-item">
             <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2019/01/29/DAY4/">差分约束</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/02/27/LCA/">LCA(寒假课件整理)</a>
         </li>
     
     </ul></div>
@@ -1202,21 +1257,15 @@ NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受�
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="KMP"><span class="iconfont-archer">&#xe606;</span>KMP</span>
+        <span class="sidebar-tag-name" data-tags="最短路"><span class="iconfont-archer">&#xe606;</span>最短路</span>
     
         <span class="sidebar-tag-name" data-tags="二分"><span class="iconfont-archer">&#xe606;</span>二分</span>
     
-        <span class="sidebar-tag-name" data-tags="Hello"><span class="iconfont-archer">&#xe606;</span>Hello</span>
-    
-        <span class="sidebar-tag-name" data-tags="最短路"><span class="iconfont-archer">&#xe606;</span>最短路</span>
-    
-        <span class="sidebar-tag-name" data-tags="二分图"><span class="iconfont-archer">&#xe606;</span>二分图</span>
-    
         <span class="sidebar-tag-name" data-tags="差分约束"><span class="iconfont-archer">&#xe606;</span>差分约束</span>
     
-        <span class="sidebar-tag-name" data-tags="倍增"><span class="iconfont-archer">&#xe606;</span>倍增</span>
+        <span class="sidebar-tag-name" data-tags="KMP"><span class="iconfont-archer">&#xe606;</span>KMP</span>
     
-        <span class="sidebar-tag-name" data-tags="归并"><span class="iconfont-archer">&#xe606;</span>归并</span>
+        <span class="sidebar-tag-name" data-tags="二分图"><span class="iconfont-archer">&#xe606;</span>二分图</span>
     
         <span class="sidebar-tag-name" data-tags="LCA"><span class="iconfont-archer">&#xe606;</span>LCA</span>
     
@@ -1224,13 +1273,21 @@ NOIP普及组整理的差不多，后期课件安排应该挺烦，先来感受�
     
         <span class="sidebar-tag-name" data-tags="set维护"><span class="iconfont-archer">&#xe606;</span>set维护</span>
     
-        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
+        <span class="sidebar-tag-name" data-tags="贪心 map"><span class="iconfont-archer">&#xe606;</span>贪心 map</span>
+    
+        <span class="sidebar-tag-name" data-tags="倍增"><span class="iconfont-archer">&#xe606;</span>倍增</span>
+    
+        <span class="sidebar-tag-name" data-tags="归并"><span class="iconfont-archer">&#xe606;</span>归并</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hello"><span class="iconfont-archer">&#xe606;</span>Hello</span>
+    
+        <span class="sidebar-tag-name" data-tags="树状数组"><span class="iconfont-archer">&#xe606;</span>树状数组</span>
     
         <span class="sidebar-tag-name" data-tags="随笔"><span class="iconfont-archer">&#xe606;</span>随笔</span>
     
-        <span class="sidebar-tag-name" data-tags="DFS"><span class="iconfont-archer">&#xe606;</span>DFS</span>
+        <span class="sidebar-tag-name" data-tags="DP"><span class="iconfont-archer">&#xe606;</span>DP</span>
     
-        <span class="sidebar-tag-name" data-tags="树状数组"><span class="iconfont-archer">&#xe606;</span>树状数组</span>
+        <span class="sidebar-tag-name" data-tags="DFS"><span class="iconfont-archer">&#xe606;</span>DFS</span>
     
         <span class="sidebar-tag-name" data-tags="贪心"><span class="iconfont-archer">&#xe606;</span>贪心</span>
     
@@ -1269,9 +1326,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="ACM"><span class="iconfont-archer">&#xe60a;</span>ACM</span>
-    
         <span class="sidebar-category-name" data-categories="最短路"><span class="iconfont-archer">&#xe60a;</span>最短路</span>
+    
+        <span class="sidebar-category-name" data-categories="ACM"><span class="iconfont-archer">&#xe60a;</span>ACM</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

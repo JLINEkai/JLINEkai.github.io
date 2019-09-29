@@ -346,61 +346,27 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/02/27/最短路/">
+        <a class="abstract-title" href="/2019/09/29/找集合/">
             
-                <span>最短路</span>
+                <span>找集合</span>
         </a>
         <div class="abstract-content">
-            新年好(cqoi 2005)题目描述重庆城里有n个车站,m条双向公路连接其中的某些车站.每两个车站最多用一条公路连接,从任何一个车站出发都可以经过一条或者多条公路到达其他车站,但不同的路径需要花费的时间可能不同.在一条路径上花费的时间等于路径上所有公路需要的时间之和.佳佳的家在车站1,他有五个亲戚,分别住在车站a,b,c,d,e.过年了,他需要从自己的家出发,拜访每个亲戚(顺序任意),给他们送去节日的祝福.怎样走,才需要最少的时间?
-输入格式 :
-第一行:n,m为车站数目和公路的数目.
-第二行:a,b,c,d,e，为五个亲戚所在车站编号。
-以下m行,每行三个整数x,y,t,为公路连接的两...
+            找集合CF1230D题目：
+n 个数中找到一个集合，在二进制下第 i 位数为 1 的数不能只有 1 个。
+解题思路：
+如果一个数字出现两次及以上，就先加入集合。然后以这个集合去扩大。
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &lt;iostream&gt;#include &lt;algorithm&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;map&gt...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/27</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/29</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="最短路">最短路</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/01/24/DAY1/">
-            
-                <span>二分+最短路</span>
-        </a>
-        <div class="abstract-content">
-            Telephone Lines原题链接：Poj3662
-题目大意 ： 在无向图上求出一条从 1 到 N 的路径，是路径上第 K + 1 大的边权尽量小
-
-解法一： 仿造了动态规划的思想，D[x, y] 表示从1号节点到达基站x，途中已经指定了p条电缆免费时，经过的路径上最贵的电缆的花费最小是多少。那么对于x到y的长度为z的无向边，如果在(x,y,z)上不免费升级，那么可以用 max(D[x, p], z) 更新D[y, p]的最小值；如果在 (x, y, z) 免费升级，可以用 D[x, p] 更新 D[y, p+1] 的最小值。需要借助SPFA经行动态规划，直到所有状态收敛。复杂度为O...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="最短路">最短路</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="二分">二分</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="贪心 map">贪心 map</a>
     
 </div>
             
