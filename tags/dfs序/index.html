@@ -346,27 +346,39 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/09/29/找集合/">
+        <a class="abstract-title" href="/2019/10/09/树上修改OI题/">
             
-                <span>找集合</span>
+                <span>树上修改</span>
         </a>
         <div class="abstract-content">
-            找集合CF1230D题目：
-n 个数中找到一个集合，在二进制下第 i 位数为 1 的数不能只有 1 个。
-解题思路：
-如果一个数字出现两次及以上，就先加入集合。然后以这个集合去扩大。
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &lt;iostream&gt;#include &lt;algorithm&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;map&gt...
+            树链剖分专题
+这该死的OI题，常数卡那么紧，没有O2死活过不了64%的数据点，一直T。不过真的是好题，收藏了！！！
+
+树上修改题目：
+给定一棵初始有 n 个点的有根树，点编号为 1 … n，其中 1 是树根。
+定义两点 u, v 间的距离为 u, v之间最短路径上的边数。
+有 m 次操作，每个操作是以下两种之一：
+
+1 f 表示在树上添加一个编号为当前点数 +1 的点，这个点在树上的父亲是 f。保证 f 是在树上存在的点。
+2 u l r表示询问以 u 为根的子树中，所有编号在 [l, r]中的点到 u 的距离之和。
+
+输入格式:
+第一行包括两个正整数 n 和 m，表示初始点数和操作数。...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/29</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/09</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="贪心 map">贪心 map</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="树状数组">树状数组</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="树链剖分">树链剖分</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="dfs序">dfs序</a>
     
 </div>
             
