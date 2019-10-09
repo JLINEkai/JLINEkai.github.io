@@ -78,8 +78,6 @@
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -203,8 +201,10 @@
 </head>
 
     
+        <body class="home-body">
     
-<header class="header">
+    
+<header class="header index-header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -220,21 +220,34 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            ACM_JLINE.
+            <!-- 文章页  -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
+            
+            
+                Never complain about what has happened, or change it, or accept it quiet.
+            
+            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -346,28 +359,27 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/01/24/DAY1/">
+        <a class="abstract-title" href="/2019/01/13/hello-world/">
             
-                <span>二分+最短路</span>
+                <span>Hello</span>
         </a>
         <div class="abstract-content">
-            Telephone Lines原题链接：Poj3662
-题目大意 ： 在无向图上求出一条从 1 到 N 的路径，是路径上第 K + 1 大的边权尽量小
-
-解法一： 仿造了动态规划的思想，D[x, y] 表示从1号节点到达基站x，途中已经指定了p条电缆免费时，经过的路径上最贵的电缆的花费最小是多少。那么对于x到y的长度为z的无向边，如果在(x,y,z)上不免费升级，那么可以用 max(D[x, p], z) 更新D[y, p]的最小值；如果在 (x, y, z) 免费升级，可以用 D[x, p] 更新 D[y, p+1] 的最小值。需要借助SPFA经行动态规划，直到所有状态收敛。复杂度为O...
+            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new "My New Post"
+More info: Writing
+Run server1$ hexo server
+More...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/24</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/13</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="二分">二分</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="最短路">最短路</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Hello">Hello</a>
     
 </div>
             
@@ -376,8 +388,107 @@
     
     <!-- paginator  -->
     
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+    
 </main>
             <!-- profile -->
+            
+            <div class="profile">
+    <img class="profile-avatar" alt="avatar" src="/avatar/CHEN.jpg">
+    <div class="profile-name">JLINE</div>
+    
+    <div class="profile-signature">
+        Nothing is impossible
+    </div>
+    
+    
+    <div class="profile-social">
+        
+    
+        
+            
+                <a href="mailto:775349565@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/weichat.png">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    
+        <div class="friends">
+            <div>FRIENDS</div>
+            
+                
+                    <span>
+                        <a href="https://llfzllfz.github.io" target="_black">llfz</a>
+                    </span>
+                
+            
+                
+                    <span>
+                        <a href="https://yywwann.github.io" target="_black">chy</a>
+                    </span>
+                
+            
+                
+                    <span>
+                        <a href="http://47.104.95.59" target="_black">nbut</a>
+                    </span>
+                
+            
+        </div>
+    
+    
+        <div class="about-me">
+            <a href="/about">ABOUT ME</a>
+        </div>
+    
+</div>
             
         </div>
         <footer class="footer footer-unloaded">
