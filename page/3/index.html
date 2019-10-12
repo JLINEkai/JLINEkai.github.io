@@ -359,6 +359,40 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/01/24/DAY1/">
+            
+                <span>二分+最短路</span>
+        </a>
+        <div class="abstract-content">
+            Telephone Lines原题链接：Poj3662
+题目大意 ： 在无向图上求出一条从 1 到 N 的路径，是路径上第 K + 1 大的边权尽量小
+
+解法一： 仿造了动态规划的思想，D[x, y] 表示从1号节点到达基站x，途中已经指定了p条电缆免费时，经过的路径上最贵的电缆的花费最小是多少。那么对于x到y的长度为z的无向边，如果在(x,y,z)上不免费升级，那么可以用 max(D[x, p], z) 更新D[y, p]的最小值；如果在 (x, y, z) 免费升级，可以用 D[x, p] 更新 D[y, p+1] 的最小值。需要借助SPFA经行动态规划，直到所有状态收敛。复杂度为O...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/01/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="二分">二分</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="最短路">最短路</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/01/14/心得/">
             
                 <span>搭建博客心得</span>
@@ -906,9 +940,26 @@ More...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 22
+        Total : 23
         </div>
         <!-- search  -->
         
@@ -921,6 +972,11 @@ More...
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/13</span><a class="archive-post-title" href="/2019/10/13/set维护树上问题/">set维护树上问题</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -973,72 +1029,6 @@ More...
         </li>
     
     
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/03</span><a class="archive-post-title" href="/2019/03/03/倍增/">倍增 + 归并</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/27</span><a class="archive-post-title" href="/2019/02/27/最短路/">最短路</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/03/12/Codeforces545/">CF 545 Div. 2</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2019/01/29/DAY4/">差分约束</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/04/16/并查集/">并查集课件</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/03/04/每日一题3_4/">传纸条</a>
-        </li>
-    
-    
     
     
     
@@ -1063,35 +1053,7 @@ More...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/13/hello-world/">Hello</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/10/09/HDU-6237素数筛/">HDU 6237</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2019/01/14/心得/">搭建博客心得</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/03/12/Codeforces545/">CF 545 Div. 2</a>
         </li>
     
     
@@ -1122,6 +1084,91 @@ More...
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/24/DAY1/">二分+最短路</a>
         </li>
     
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/04/16/并查集/">并查集课件</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/10/09/HDU-6237素数筛/">HDU 6237</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/03/04/每日一题3_4/">传纸条</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/01/13/hello-world/">Hello</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href="/2019/03/03/倍增/">倍增 + 归并</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href="/2019/02/27/最短路/">最短路</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/29</span><a class="archive-post-title" href="/2019/01/29/DAY4/">差分约束</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href="/2019/01/14/心得/">搭建博客心得</a>
+        </li>
+    
     </ul></div>
   </div>
         <div class="sidebar-panel-tags">
@@ -1131,13 +1178,13 @@ More...
     
         <span class="sidebar-tag-name" data-tags="二分"><span class="iconfont-archer">&#xe606;</span>二分</span>
     
-        <span class="sidebar-tag-name" data-tags="最短路"><span class="iconfont-archer">&#xe606;</span>最短路</span>
-    
         <span class="sidebar-tag-name" data-tags="二分图"><span class="iconfont-archer">&#xe606;</span>二分图</span>
+    
+        <span class="sidebar-tag-name" data-tags="最短路"><span class="iconfont-archer">&#xe606;</span>最短路</span>
     
         <span class="sidebar-tag-name" data-tags="差分约束"><span class="iconfont-archer">&#xe606;</span>差分约束</span>
     
-        <span class="sidebar-tag-name" data-tags="CF"><span class="iconfont-archer">&#xe606;</span>CF</span>
+        <span class="sidebar-tag-name" data-tags="素数筛"><span class="iconfont-archer">&#xe606;</span>素数筛</span>
     
         <span class="sidebar-tag-name" data-tags="LCA"><span class="iconfont-archer">&#xe606;</span>LCA</span>
     
@@ -1147,7 +1194,7 @@ More...
     
         <span class="sidebar-tag-name" data-tags="Hello"><span class="iconfont-archer">&#xe606;</span>Hello</span>
     
-        <span class="sidebar-tag-name" data-tags="素数筛"><span class="iconfont-archer">&#xe606;</span>素数筛</span>
+        <span class="sidebar-tag-name" data-tags="CF"><span class="iconfont-archer">&#xe606;</span>CF</span>
     
         <span class="sidebar-tag-name" data-tags="倍增"><span class="iconfont-archer">&#xe606;</span>倍增</span>
     
@@ -1170,6 +1217,10 @@ More...
         <span class="sidebar-tag-name" data-tags="树链剖分"><span class="iconfont-archer">&#xe606;</span>树链剖分</span>
     
         <span class="sidebar-tag-name" data-tags="dfs序"><span class="iconfont-archer">&#xe606;</span>dfs序</span>
+    
+        <span class="sidebar-tag-name" data-tags="set"><span class="iconfont-archer">&#xe606;</span>set</span>
+    
+        <span class="sidebar-tag-name" data-tags="扫描线"><span class="iconfont-archer">&#xe606;</span>扫描线</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

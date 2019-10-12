@@ -346,30 +346,36 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/03/03/倍增/">
+        <a class="abstract-title" href="/2019/10/13/set维护树上问题/">
             
-                <span>倍增 + 归并</span>
+                <span>set维护树上问题</span>
         </a>
         <div class="abstract-content">
-            Genius ACM原题链接：CH0601题目大意：给定一个整数 M，对于任意一个整数集合 S，定义“校验值”如下:  
-从集合 S 中取出 M 对数(即 2∗M 个数，不能重复使用集合中的数，如果 S 中的整 数不够 M 对，则取到不能取为止)，使得“每对数的差的平方”之和最大，这个最大值 就称为集合 S 的“校验值”。
-现在给定一个长度为 N 的数列 A 以及一个整数 T。我们要把 A 分成若干段，使得 每一段的“校验值”都不超过 T。求最少需要分成几段。
-题解：首先max（sum） = （最大-最小）²+（次大-次小）²+…. 段数最少，那么每一段就要尽量长
+            9月提高组模拟赛题三
+越写越好玩，不得不佩服出题人！！！官方题解写得特别用心！！！
 
-暴力枚举，枚举每个s...
+set维护树上问题题目：
+给定一棵初始有 n 个点的有根树，点编号为 1 … n，其中 1 是树根，每个点有权值 ai。
+对于每个点 u，设其他既不是 u 的父节点，也不是 u 的子节点构成的集合为 E，集合中的点按权值从小到大排序，求相邻两项的绝对值的最大值。如果集合 E 的点小于等于 2，直接输出 -1.
+输入格式:
+第一行一个正整数 n，表示树上节点的数量。
+第二行 n 个正整数，第 i 个正整数表示 ai。
+接下来的 n - 1 行，每行两个整数 u 和 v，表示编号为 u 的点和编号为 v 的...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/03</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/13</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="倍增">倍增</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="树链剖分">树链剖分</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="归并">归并</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="set">set</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="扫描线">扫描线</a>
     
 </div>
             
