@@ -78,6 +78,8 @@
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -201,10 +203,8 @@
 </head>
 
     
-        <body class="home-body">
     
-    
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -220,34 +220,21 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            ACM_JLINE.
-            <!-- 文章页  -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-            
-            
-                Never complain about what has happened, or change it, or accept it quiet.
-            
-            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -359,344 +346,28 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/09/29/找集合/">
+        <a class="abstract-title" href="/2019/11/01/ICPC-nanjin/">
             
-                <span>找集合</span>
+                <span>ICPC_南京</span>
         </a>
         <div class="abstract-content">
-            找集合CF1230D题目：
-n 个数中找到一个集合，在二进制下第 i 位数为 1 的数不能只有 1 个。
-解题思路：
-如果一个数字出现两次及以上，就先加入集合。然后以这个集合去扩大。
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &lt;iostream&gt;#include &lt;algorithm&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;map&gt...
+            ICPC_南京站签到题很顺利，奇数偶数分开考虑就行。
+C题是离散一下，然后BFS一下也行。
+K题是平面几何，还好没有二分，赛后听说二分的队伍都被卡死了，精度明显不够。
+初中数学，告诉你一个三角形，和一个点，首先要判断一下那个点是不是在三角形的边上。然后让你再找一个点把三角形分成成两半，另外那个点也必须是在三角形上的。真的不复杂，可是当时有点怕，公式都是现场推的。
+H题推了好久，太容易绕晕了。那个NO的条件推导出了，也和最后想的一样，其实YES赛后想想也挺简单的，有个样例1 0 0要特判。感觉很奇妙，旁边的队因为这个wa了四次，最后激动的还说了这个样例。
+J题是二分图最大匹配，可是我们用贪...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/29</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/01</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="贪心 map">贪心 map</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/09/28/树状数组/">
-            
-                <span>树状数组</span>
-        </a>
-        <div class="abstract-content">
-            树状数组POJ2182题目：
-有n头奶牛，已知它们的身高为 1~n 且各不相同，但不知道每头奶牛的具体身高.  现在这n头奶牛站成一列，已知第i头牛前面有Ai头牛比它低，求每头奶牛的身高.
-解题思路：
-首先记录一个01序列，起初都为1，从n到1倒着操作，每次查找第Ai + 1小的数即可，然后把那个数后面那个数标记成0 . 前缀和用树状数组维护,查找用二分
-二分 + 树状数组
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include &l...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/28</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="树状数组">树状数组</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/04/16/并查集/">
-            
-                <span>并查集课件</span>
-        </a>
-        <div class="abstract-content">
-            并查集
-(当然又是备课)
-
-程序自动分析原题链接：NOI 2015题目大意：给你两个值，告诉你相等或者不相等，问最后是否有矛盾的。
-题解：并查集裸题由于数字范围比较大，所以简单离散化一下直接贴代码
-Code block12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273#include &lt;iostream&gt;#include &lt;cstdio&gt;#in...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="并查集">并查集</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/04/01/Codeforces550/">
-            
-                <span>CF 550 Div. 3</span>
-        </a>
-        <div class="abstract-content">
-            CF 550 Div. 3原题链接：传送门
-昨晚的Div. 3自己开了一场顺利A完前6题第6题没有初始化调了好久
-
-A题目大意：给你一个字符串，你可以随意打乱，如果它们是一段连续的字串输出 “YES”, 否则输出“NO”
-题解：排个序就行
-Code block1234567891011121314151617181920212223242526272829303132#include &lt;bits/stdc++.h&gt;#define FAST_IO ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);#define ll lon...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/01</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="二分图">二分图</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/14/贪心/">
-            
-                <span>贪心课件</span>
-        </a>
-        <div class="abstract-content">
-            贪心
-(当然又是备课)
-
-Sunscreen原题链接：POJ 3614题目大意：有 n 头奶牛需要 minSPF[i] 和 maxSPF[i] 单位强度的阳光。有 L 种防晒霜，每一种防晒霜有一个 SPF[i] 值，和 cover[i] 瓶。求最多可以满足多少头奶牛。
-题解：根据奶牛的 minSPF 递减排个序就行，挺好理解。直接上代码。
-Code block1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include &lt;...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="贪心">贪心</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/12/每日一练3_12/">
-            
-                <span>搜索（剪枝）</span>
-        </a>
-        <div class="abstract-content">
-            DFS + 剪枝原题链接：传送门
- CF C题
-
-题目大意：有 2n 个基地，其中 k 个基地是有复仇者的，问把 1 - 2n 个基地都摧毁需要最小的代价。摧毁一段区间的地基可以选择直接摧毁，代价是 A * na * l , A 题目会直接告诉你， na 区间内存在复仇者的数量，l 是区间长度；或者你也可以把这个大区间平均分成两半， 仍然按之前的方法计算， 然后如果小区间不存在复仇者， 那么摧毁这段的代价直接为 B。
-数据范围 :n (1 ≤ n ≤ 30)k (1 ≤ k ≤ 105)A, B ( 1 ≤ A, B ≤ 104)
-题解：这个模型是不是很像线段树，可是 2n 太大了。如果...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="DFS">DFS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/12/Codeforces545/">
-            
-                <span>CF 545 Div. 2</span>
-        </a>
-        <div class="abstract-content">
-            CF 545 Div. 2原题链接：传送门
-真香又把这事给搁下了打了场傍晚场的CF B题才过了五百来号人 太惨了啊。打不动 打不动
-
-A题目大意：在数组中 只包含 1 2， 找出最长连续的1 1 … 2 2 … 或者 2 2 … 1 1… ，要求 1 和 2 数量相等  
-题解：0(n) 扫一遍就行, 签到
-Code block123456789101112131415161718192021222324252627282930313233343536#include &lt;bits/stdc++.h&gt;using namespace std;const int MOD = 1e9...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="KMP">KMP</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="二分">二分</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/07/每日一练3_7/">
-            
-                <span>矩阵取数游戏</span>
-        </a>
-        <div class="abstract-content">
-            矩阵取数游戏原题链接：传送门
-昨天的太难了 今天才想明白 状态转移应该没问题， 后面懒得搞大数了
-
-题目大意：棋盘上 A 点有一个过河卒，需要走到目标 B 点。卒行走的规则：可以向下、或者向右。同时在棋盘上 C 点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。
-棋盘用坐标表示，A点(0, 0) 、B点(n, m) (n, m为不超过20的整数)，同样马的位置坐标是需要给出的。
-现在要求你计算出卒从A点能够到达B点的路径的条数，假设马的位置是固定不动的，并不是卒走一步马走一步。
-题解：签到题 注意别越界  
-Code block123456...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/07</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/05/每日一练3_5/">
-            
-                <span>矩阵取数游戏</span>
-        </a>
-        <div class="abstract-content">
-            矩阵取数游戏原题链接：传送门
-今天的DP总算是算水的了
-
-题目大意：帅帅经常跟同学玩一个矩阵取数游戏：对于一个给定的 n × m 的矩阵，矩阵中的每个元素ai，aj 均为非负整数，游戏规则如下：  
-
-每次取数时须从每行各取走一个元素，共nn个。经过mm次后取完矩阵内所有元素；  
-
-每次取走的各个元素只能是该元素所在行的行首或行尾；  
-
-每次取数都有一个得分值，为每行取数的得分之和，每行取数的得分 = 被取走的元素值  × ( 2 ^ i), 其中i表示第i次取数（从1开始编号）；  
-
-游戏结束总得分为m次取数得分之和。  
-
-
-帅帅想请你帮忙写一个程序，对于任意矩阵，可以求出取数...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/05</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/03/04/每日一题3_4/">
-            
-                <span>传纸条</span>
-        </a>
-        <div class="abstract-content">
-            传纸条 Day 1原题链接：传送门题目大意：在 m * n 的矩阵中， 从 (1,1) 到 (m, n) 的两条路劲和最大， 并且不相交
-解法一：其实是一个很简单的棋盘形dp，可以直接看成 (1,1) 到 (m, n) 的两条严格不相交路劲。
-直接思维DP，设f[i][j][k][l]为从第一张纸条到达 (i, j) ，第二张纸条 (k,l) 的路径上取得的最大的好心程度和。
-那么特别显然，转移方程是 f[i][j][k][l]=max( f[i][j-1][k-1][l] , f[i-1][j][k][l-1] , f[i][j-1][k][l-1] , f[i-1][j][k-1][...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="DP">DP</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="ICPC">ICPC</a>
     
 </div>
             
@@ -705,107 +376,8 @@ Code block123456...
     
     <!-- paginator  -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a>
-    </nav>
-    
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src="/avatar/CHEN.jpg">
-    <div class="profile-name">JLINE</div>
-    
-    <div class="profile-signature">
-        Nothing is impossible
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:775349565@qq.com" class="iconfont-archer email" title="email"></a>
-            
-        
-    
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title="wechat">
-                  
-                  <img class="profile-qr" src="/assets/weichat.png">
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href="https://llfzllfz.github.io" target="_black">llfz</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="https://yywwann.github.io" target="_black">chy</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="http://47.104.95.59" target="_black">nbut</a>
-                    </span>
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href="/about">ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">
